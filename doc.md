@@ -1,5 +1,4 @@
 #Documentation of Lab1
-Yiran Cao.805
 
 
 ##Design & Description of MyTokenizer Class
