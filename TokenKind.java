@@ -9,9 +9,59 @@ package core;
 enum TokenKind {
 
     /**
-     * Test driver's token number = 1.
+     * Test driver's token number = 1; token is program.
      */
-    LOWER_CASE_WORD(1),
+    PROGRAM(1),
+
+    /**
+     * Test driver's token number = 2; token is begin.
+     */
+    BEGIN(2),
+
+    /**
+     * Test driver's token number = 3; token is begin.
+     */
+    END(3),
+
+    /**
+     * Test driver's token number = 4; token is int.
+     */
+    INT(4),
+
+    /**
+     * Test driver's token number = 5; token is if.
+     */
+    IF(5),
+
+    /**
+     * Test driver's token number = 6; token is then.
+     */
+    THEN(6),
+
+    /**
+     * Test driver's token number = 7; token is else.
+     */
+    ELSE(7),
+
+    /**
+     * Test driver's token number = 8; token is while.
+     */
+    WHILE(8),
+
+    /**
+     * Test driver's token number = 9; token is LOOP.
+     */
+    LOOP(9),
+
+    /**
+     * Test driver's token number = 10; token is read.
+     */
+    READ(10),
+
+    /**
+     * Test driver's token number = 11; token is write.
+     */
+    WRITE(11),
 
     /**
      * Test driver's token number = 12; token is ;.
@@ -19,19 +69,42 @@ enum TokenKind {
     SEMICOLON(12),
 
     /**
+     * Test driver's token number = 13; token is ,.
+     */
+    COMMA(13),
+
+    /**
      * Test driver's token number = 14; token is =.
      */
     ASSIGNMENT_OPERATOR(14),
 
     /**
+     * Test driver's token number = 15; token is !.
+     */
+    NOT_OPERATOR(15),
+
+    LEFT_BRACKET(16),
+    RIGHT_BRACKET(17),
+    AND_OPERATOR(18),
+    /**
      * Test driver's token number = 19; token is ||.
      */
     OR_OPERATOR(19),
+    LEFT_PARENTHESIS(20),
+    RIGHT_PARENTHESIS(21),
+    PLUS_OPERATOR(22),
+    MINUS_OPERATOR(23),
+    TIME_OPERATOR(24),
+    INEUQALITY_TEST(25),
 
-    /**
+    /*
      * Test driver's token number = 26; token is ==.
      */
     EQUALITY_TEST(26),
+    LESS_TEST(27),
+    GREATER_TEST(28),
+    LESS_EQUAL_TEST(29),
+    GREATER_EQUAL_TEST(30),
 
     /**
      * Test driver's token number = 31.

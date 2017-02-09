@@ -59,6 +59,7 @@ class MyTokenizer implements Tokenizer {
 		if(this.entry == this.line.length() && !this.src.hasNextLine()) {
 			return TokenKind.EOF;
 		}
+
 		String first = this.line.substring(this.entry, this.end);
 
 		/* ---------------------------------------- automaton ---------------------------------------- */
@@ -67,7 +68,7 @@ class MyTokenizer implements Tokenizer {
 		while (whitespaces.contains(first)) {
 			this.entry ++;
 			this.end ++;
-			if (this.end == this.line.length()) {
+			if (this.end >= this.line.length()) {
 				if (!this.src.hasNextLine()) {
 					return TokenKind.EOF;
 				} else {
@@ -89,9 +90,30 @@ class MyTokenizer implements Tokenizer {
 		if(!src.hasNextLine() && this.entry == this.line.length()) {
 			// EOF
 			return TokenKind.EOF;
-		} else if (first.equals(";")) {
+		} else if (first.equals(",")) {
+			// COMMA
+			return TokenKind.COMMA;
+		}else if (first.equals(";")) {
 			// SEMICOLON
 			return TokenKind.SEMICOLON;
+		} else if (first.equals("[")) {
+			// LEFT_BRACKET
+			return TokenKind.LEFT_BRACKET;
+		} else if (first.equals("]")) {
+			// RIGHT_BRACKET
+			return TokenKind.RIGHT_BRACKET;
+		} else if (first.equals("(")) {
+			// LEFT_PARENTHESIS
+			return TokenKind.LEFT_PARENTHESIS;
+		} else if (first.equals(")")) {
+			// RIGHT_PARENTHESIS
+			return TokenKind.RIGHT_PARENTHESIS;
+		} else if (first.equals("+")) {
+			// PLUS_OPERATOR
+			return TokenKind.PLUS_OPERATOR;
+		} else if (first.equals("-")) {
+			// MINUS_OPERATOR
+			return TokenKind.MINUS_OPERATOR;
 		} else if (first.equals("=")) {
 			// ASSIGNMENT or EQUALITY_TEST
 			if (this.end >= this.line.length()) {
@@ -101,6 +123,26 @@ class MyTokenizer implements Tokenizer {
 			} else {
 				this.end += 1;
 				return TokenKind.EQUALITY_TEST;
+			}
+		} else if (first.equals("<")) {
+			// LESS_TEST or LESS_EQUAL_TEST
+			if (this.end >= this.line.length()) {
+				return TokenKind.LESS_TEST;
+			} else if (this.line.charAt(this.end) != '=') {
+				return TokenKind.LESS_TEST;
+			} else {
+				this.end += 1;
+				return TokenKind.LESS_EQUAL_TEST;
+			}
+		} else if (first.equals(">")) {
+			// GRESTER_TEST or GREATER_EQUAL_TEST
+			if (this.end >= this.line.length()) {
+				return TokenKind.GREATER_TEST;
+			} else if (this.line.charAt(this.end) != '=') {
+				return TokenKind.GREATER_TEST;
+			} else {
+				this.end += 1;
+				return TokenKind.GREATER_EQUAL_TEST;
 			}
 		} else if (first.equals("|")) {
 			// OR_OPERATOR
@@ -113,6 +155,15 @@ class MyTokenizer implements Tokenizer {
 				return TokenKind.OR_OPERATOR;
 			}
 
+		} else if(first.equals("&")){
+			if (this.end >= this.line.length()) {
+				return TokenKind.ERROR;
+			} else if (this.line.charAt(this.end) != '&') {
+				return TokenKind.ERROR;
+			} else {
+				this.end ++;
+				return TokenKind.AND_OPERATOR;
+			}
 		} else if (uppercase.contains(first)) {
 			// IDENTIFIER
 			while (this.end < this.line.length()) {
@@ -170,7 +221,47 @@ class MyTokenizer implements Tokenizer {
 					break;
 				}
 			}
-			return TokenKind.LOWER_CASE_WORD;
+			this.id_token_name = this.line.substring(this.entry, this.end);
+
+			switch (this.id_token_name) {
+				case "program": 
+					return TokenKind.PROGRAM;
+					// break;
+				case "begin": 
+					return TokenKind.BEGIN;
+					// break;
+				case "end":
+					return TokenKind.END;
+					// break;
+				case "int":
+					return TokenKind.INT;
+					// break;
+				case "if":
+					return TokenKind.IF;
+					// break;
+				case "then":
+					return TokenKind.THEN;
+					// break;
+				case "else":
+					return TokenKind.ELSE;
+					// break;
+				case "while":
+					return TokenKind.WHILE;
+					// break;
+				case "loop":
+					return TokenKind.LOOP;
+					// break;
+				case "read":
+					return TokenKind.READ;
+					// break;
+				case "write":
+					return TokenKind.WRITE;
+					// break;
+				default:
+					return TokenKind.ERROR;
+					// break;
+
+			}
 		} else {
 			return TokenKind.ERROR;
 		}

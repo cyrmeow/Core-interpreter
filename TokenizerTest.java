@@ -36,8 +36,9 @@ public final class TokenizerTest {
             return;
         }
         Tokenizer t = MyTokenizer.create(in);
-        while (t.getToken() != TokenKind.EOF && t.getToken() != ERROR) {
+        while (t.getToken() != ERROR) {
             System.out.println(t.getToken().testDriverTokenNumber());
+            if(t.getToken() == TokenKind.EOF) break;
             t.skipToken();
         }
         if (t.getToken() == ERROR) {
