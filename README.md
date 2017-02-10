@@ -1,9 +1,9 @@
 #README
 
-This is a warm-up tokenizer for Core, which identifies
+This is a tokenizer for Core, which identifies
 
-* Lowercase words
-* Special symbols (4 special symbols): `; = || ==`
+* Reserved words(11 reserved): `program, begin, end, int, if, then, else, while, loop, read, write`
+* Special symbols (19 special symbols): `; , = ! [ ] && || ( ) + - * != == < > <= >=`
 * Integers (unsigned, possibly with leading zeros)
 * Identifiers: start with uppercase letter, followed by zero or more uppercase letters and ending with zero or more digits.
 
@@ -11,7 +11,7 @@ This is a warm-up tokenizer for Core, which identifies
 
 * README.txt: overall introduction and instructions on how to run the tokenizer.
 * Tokenizer.java: Contains the well-defined interface provided by Dr.Heym.
-* TokenKind.java: Defines Token kinds needed for Part 1 of the Core Interpreter project, an enum class.
+* TokenKind.java: Defines Token kinds and token numbers needed for the project, an enum class.
 * MyTokenizer.java: Implements the Tokenizer interface, implementing the finite automaton and other main tokenizer behaviors.
 * TokenizerTest.java: Contains main class.
 * makefile: Used to compile the source files
@@ -22,4 +22,7 @@ This is a warm-up tokenizer for Core, which identifies
 1. Open a command line terminal, change working directory to the same as the source files'
 2. input `make` to compile
 3. input `java core/TokenizerTest <input-file-path>` to get the tokenizer running
+
+##Outputs
+The tokenizer outputs the number of token(See `TokenKind.java`) it encounters, and outputs error message and stops running if encountered with any illegal token.
 

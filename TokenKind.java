@@ -83,27 +83,79 @@ enum TokenKind {
      */
     NOT_OPERATOR(15),
 
+    /**
+     * Test driver's token number = 16; token is [.
+     */
     LEFT_BRACKET(16),
+
+    /**
+     * Test driver's token number = 17; token is ].
+     */
     RIGHT_BRACKET(17),
+
+    /**
+     * Test driver's token number = 18; token is &&.
+     */
     AND_OPERATOR(18),
+
     /**
      * Test driver's token number = 19; token is ||.
      */
     OR_OPERATOR(19),
+
+    /**
+     * Test driver's token number = 20; token is (.
+     */
     LEFT_PARENTHESIS(20),
+
+    /**
+     * Test driver's token number = 21; token is ).
+     */
     RIGHT_PARENTHESIS(21),
+
+    /**
+     * Test driver's token number = 22; token is +.
+     */
     PLUS_OPERATOR(22),
+
+    /**
+     * Test driver's token number = 23; token is -.
+     */
     MINUS_OPERATOR(23),
+
+    /**
+     * Test driver's token number = 24; token is *.
+     */
     TIME_OPERATOR(24),
+
+    /**
+     * Test driver's token number = 25; token is !=.
+     */
     INEUQALITY_TEST(25),
 
     /*
      * Test driver's token number = 26; token is ==.
      */
     EQUALITY_TEST(26),
+
+    /**
+     * Test driver's token number = 27; token is <.
+     */
     LESS_TEST(27),
+
+    /**
+     * Test driver's token number = 28; token is >.
+     */
     GREATER_TEST(28),
+
+    /**
+     * Test driver's token number = 29; token is <=.
+     */
     LESS_EQUAL_TEST(29),
+
+    /**
+     * Test driver's token number = 30; token is >=.
+     */
     GREATER_EQUAL_TEST(30),
 
     /**
