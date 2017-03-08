@@ -30,26 +30,37 @@ public final class TokenizerTest {
         Scanner in;
 
         try {
-            in = new Scanner(Paths.get(args[0]));
+            in = new Scanner(Paths.get(args[0])).useDelimiter("");
         } catch (IOException e) {
             System.err.println("Error opening file: " + args[0]);
             return;
         }
         Tokenizer t = MyTokenizer.create(in);
-        while (t.getToken() != ERROR) {
-            System.out.println(t.getToken().testDriverTokenNumber());
-            if(t.getToken() == TokenKind.EOF) break;
-            t.skipToken();
-        }
-        if (t.getToken() == ERROR) {
-            System.out.println("Error: Illegal token encountered.");
-        }
+        // while (t.getToken() != ERROR) {
+        //     System.out.println(t.getToken().testDriverTokenNumber());
+        //     if(t.getToken() == TokenKind.EOF) break;
+        //     t.skipToken();
+        // }
+        // if (t.getToken() == ERROR) {
+        //     System.out.println("Error: Illegal token encountered.");
+        // }
         /*
          * Close input stream
          */
 
         // *******************test code******************* //
-        
+        while(t.getToken() != ERROR) {
+            System.out.println(t.getToken().testDriverTokenNumber());
+            if(t.getToken() == TokenKind.EOF) {
+                // System.out.println();
+                break;
+            }
+            t.skipToken();
+        }
+        if (t.getToken() == ERROR) {
+            System.out.println("Error: Illegal token encountered.");
+        }
+
         in.close();
     }
 

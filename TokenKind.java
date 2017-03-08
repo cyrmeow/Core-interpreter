@@ -131,7 +131,7 @@ enum TokenKind {
     /**
      * Test driver's token number = 25; token is !=.
      */
-    INEUQALITY_TEST(25),
+    INEQUALITY_TEST(25),
 
     /*
      * Test driver's token number = 26; token is ==.
@@ -171,12 +171,15 @@ enum TokenKind {
     /**
      * Test driver's token number = 33.
      */
+
     EOF(33),
 
     /**
      * Test driver's token number = 34.
      */
-    ERROR(34);
+    ERROR(34),
+
+    SPACE(35);
 
     /**
      * Test driver's token number.
