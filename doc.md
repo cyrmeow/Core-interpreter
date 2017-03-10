@@ -1,23 +1,26 @@
-#Documentation of Lab1
+#Documentation of Lab2
 
 
 ##Design & Description of MyTokenizer Class
 
-###MyTokenizer Class
+### MyTokenizer Class
 
-In this class, I implement the `Tokenizer` interface and  also introduced several other private member variables. During the tokenizing process, the input file is analyzed line by line. A `String` variable `line` stores the line which is currently being tokenized. To guarantee that `getToken()` can be called more than one time while returning the same token, I keep the entry position (`private int entry`) and the end position (`private int end`), indicating the position of the current token within the current line of input. Two other private variables `int int_token_value` and `String id_token_name` are used to save the value of token if it's a integer/identifier token.
+In this class, I implement the `Tokenizer` interface and  also introduced several other private member variables. During the tokenizing process, the input file is analyzed character by character. The member variable `TokenKind curTokenKind` keeps track of the type of the current token and acts as the return value when `getToken()` is called. `skipToken()` changes the current state of the tokenizer, find the next token and make changes to some affected member variables.
 
 ###The Finite State Automaton
 
-The main function of the tokenizer, taking a stream of input and identify all tokens/errors in it, is defined by the finite state automaton. Specifically, I employ the automaton Dr.Heym provided in class and implemented it in the `getToken()` method.
+The main function of the tokenizer, taking a stream of input and identify all tokens/errors in it, is defined by the finite state automaton. Specifically, I employ the automaton Dr.Heym provided in class and implemented it in the `skipToken()` method.
 
 ###Skipping Whitespaces
 
-One important thing to do is to enable the tokenizer to recognize all the whitespaces between 2 legal tokens and ignore them. Here whitespaces are skipped before the automaton's work begins. If the current entry is a whitespace, I just move the `entry` to the next position which is not a whitespace. During this process, we may encountered with `EOF` as well as the end of the line. The program deals with these issues well.
+The whitespace is actually regarded as a token. Skipping whitespaces is implemented in getToken(), by skipping the whitespaces token until the next token is not a whitespace.
 
 ### `skipToken()`
 
-Since `entry` and `end` are hired to keep track of the position of the current token, it is easy to implement this method. In this method, I just move `entry` to `end`, also handling with possible `EOF` and line changes.
+In `skipToken()`, the automaton is simulated, and the `curTokenKind` instance variable is changed after `skipToken()` is called.
+
+### `getToken()`
+`getToken()` simply returns the `curTokenKind`, skipping the current token if it's a whitespace.
 
 ###Store the Value of Integer/Identifier Tokens
 
