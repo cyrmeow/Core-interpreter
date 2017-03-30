@@ -1,4 +1,4 @@
-#README
+# README
 
 This is a tokenizer for Core, which identifies
 
@@ -7,7 +7,7 @@ This is a tokenizer for Core, which identifies
 * Integers (unsigned, possibly with leading zeros)
 * Identifiers: start with uppercase letter, followed by zero or more uppercase letters and ending with zero or more digits.
 
-##Files
+## Files
 
 * README.txt: overall introduction and instructions on how to run the tokenizer.
 * Tokenizer.java: Contains the well-defined interface provided by Dr.Heym.
@@ -18,11 +18,11 @@ This is a tokenizer for Core, which identifies
 * Runfile.txt: Contains a single line of text that shows how to run your program from the command line.
 * doc.md: A description of the overall design of the tokenizer.
 
-##How-to-Run
+## How-to-Run
 1. Open a command line terminal, change working directory to the same as the source files'
 2. input `make` to compile
 3. input `java core/TokenizerTest <input-file-path>` to get the tokenizer running
 
-##Outputs
+## Outputs
 The tokenizer outputs the number of token(See `TokenKind.java`) it encounters, and outputs error message and stops running if encountered with any illegal token.
 
